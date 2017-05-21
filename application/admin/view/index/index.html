@@ -1,0 +1,93 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <title>语聊 - 语音社交管理系统</title>
+   <meta name="description" content="Bootstrap Admin App + jQuery">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="robots" content="noarchive">
+   <meta name="robots" content="nofollow" />
+   <meta  name="robots"  content="noodp">
+   <link rel="shortcut icon" href="favicon.ico"/>
+   <link rel="shortcut icon" href="__PUBLIC__/favicon.ico"/>
+   <!-- =============== VENDOR STYLES ===============-->
+   <!-- FONT AWESOME-->
+   <link rel="stylesheet" href="__PUBLIC__/css/font-awesome.min.css">
+   <!-- SIMPLE LINE ICONS-->
+   <link rel="stylesheet" href="__PUBLIC__/css/simple-line-icons.css">
+   <!-- =============== BOOTSTRAP STYLES ===============-->
+   <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.css" id="bscss">
+   <!-- =============== APP STYLES ===============-->
+   <link rel="stylesheet" href="__PUBLIC__/css/app.css" id="maincss">
+</head>
+<body>
+   <div class="wrapper">
+      <div class="block-center mt-xl wd-xl">
+         <!-- START panel--><br><br><br><br><br>
+         <div class="panel panel-dark panel-flat">
+            <div class="panel-heading text-center">
+               <a href="{:url('index/admin')}">
+                  <img src="__PUBLIC__/img/logo.png" alt="Image" class="block-center img-rounded">
+               </a>
+            </div>
+            <div class="panel-body">
+               <p class="text-center pv">管理员登录</p>
+               <form action="{:url('/login')}" method="post" role="form" data-parsley-validate="" novalidate="" class="mb-lg">
+                  <div class="form-group has-feedback">
+                     <input id="exampleInputEmail1" type="text" name="username" data-parsley-error-message="请输入管理账号" placeholder="管理账号" autocomplete="off" required class="form-control">
+                     <span class="fa fa-user form-control-feedback text-muted"></span>
+                  </div>
+                  <div class="form-group has-feedback">
+                     <input id="exampleInputPassword1" type="password" name="pwd" data-parsley-error-message="请输入密码" placeholder="密码" required class="form-control">
+                     <span class="fa fa-lock form-control-feedback text-muted"></span>
+                  </div>
+                  <div class="clearfix">
+                     <div class="checkbox c-checkbox pull-left mt0">
+                        <label>
+                           <input type="checkbox" value="" name="remember">
+                           <span class="fa fa-check"></span>记住登录</label>
+                     </div>
+                     <div class="pull-right"><a href="recover.php" class="text-muted">忘记密码?</a>
+                     </div>
+                  </div>
+                  <button type="submit" rel="nofollow" class="btn btn-block btn-primary mt-lg">确定登录</button>
+               </form>
+            </div>
+         </div>
+         <!-- END panel-->
+         <div class="p-lg text-center">
+            <span>&copy;</span>
+            <span>2016</span>
+            <span>-</span>
+            <span>语聊·商业管理系统</span>
+            <br>
+            <span>yuliaoim.com © All Rights Reserved</span>
+         </div>
+      </div>
+   </div>
+   <!-- =============== VENDOR SCRIPTS ===============-->
+   <!-- MODERNIZR-->
+   <script src="__PUBLIC__/js/modernizr.custom.js"></script>
+   <!-- JQUERY-->
+   <script src="__PUBLIC__/js/jquery.js"></script>
+   <!-- BOOTSTRAP-->
+   <script src="__PUBLIC__/js/bootstrap.js"></script>
+   <!-- STORAGE API-->
+   <script src="__PUBLIC__/js/jquery.storageapi.js"></script>
+   <!-- PARSLEY-->
+   <script src="__PUBLIC__/js/parsley.min.js"></script>
+   <!-- =============== APP SCRIPTS ===============-->
+   <script src="__PUBLIC__/js/app.js"></script>
+   <!-- =============== 图片皮肤 ===============-->
+   <script>
+   var bg_img=["__PUBLIC__/img/index_slide_1.jpg",
+               "__PUBLIC__/img/index_slide_2.jpg",
+			   "__PUBLIC__/img/index_slide_3.jpg",
+			   "__PUBLIC__/img/index_slide_4.jpg",
+			   "__PUBLIC__/img/index_slide_5.jpg"];
+   document.body.style.background="url("+bg_img[Math.floor(Math.random()*(bg_img.length))]+")";
+  </script>
+</body>
+</html>

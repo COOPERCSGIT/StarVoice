@@ -1,0 +1,152 @@
+<section>
+	 <!-- Page content-->
+	<div class="content-wrapper">	
+		<!-- 标题 -->
+        <!-- 标签-->
+         <!-- START row-->
+            <div class="row">
+               <div class="col-md-12">
+                  <form action="" method="post" enctype="multipart/form-data" data-parsley-validate="" novalidate="" class="form-horizontal">
+                     <!-- START panel-->
+                     <div class="panel panel-default">
+                        <div class="panel-body">
+                           <h4>发布语音</h4>
+                           <fieldset>
+                              <div class="form-group">
+                                 <label class="col-sm-2 control-label">标题：</label>
+                                 <div class="col-sm-3">
+                                    <input type="text" name="title" required="required" class="form-control" placeholder="请输入语音标题">
+                                 </div>
+                              </div>
+                           </fieldset>
+						   <fieldset>
+                              <div class="form-group">
+                                 <label class="col-sm-2 control-label">上传音频：</label>
+                                 <div class="col-sm-3">
+                                    <input type="text" id="reurl" value="" required="required" disabled="disabled" class="form-control" placeholder="点击上传">
+                                 	<input type="file" name="reurl" style="display: none;" class="imgs" multiple="multiple" accept="file/*" />
+                                 </div>
+								 <button type="button" class="mb-sm btn btn-default upload" style="float: left;">上传</button>
+                              </div>
+                           </fieldset>
+                           <fieldset>
+                              <div class="form-group">
+                                 <label class="col-sm-2 control-label">音频时长：</label>
+                                 <div class="col-sm-3">
+                                    <input type="text" name="length" required="required" class="form-control" placeholder="请输入音频时长（单位：秒）">
+                                 </div>
+                              </div>
+                           </fieldset>
+						   <fieldset>
+                              <div class="form-group">
+                                 <label class="col-sm-2 control-label">是否热门：</label>
+                                 <div class="col-sm-3">
+                                    <select name="is_hot" class="form-control">
+                                       <option value="0">否</option>
+                                       <option value="1">是</option>
+                                    </select>                                    
+                                 </div> 
+                              </div>
+                           </fieldset>
+						    <!-- 发布到哪儿帐号？ -->
+						   <fieldset>
+                              <div class="form-group">
+                                 <label class="col-sm-2 control-label">选择发布者：</label>
+                                 <div class="col-sm-3">
+                                    <select name="uid" class="form-control">
+                                       <volist name="users" id="vo">
+                                       <option value="{$vo.uid}">{$vo['type'] ? 'R-'.$vo['nickname'] : $vo['nickname']}</option>
+                                       </volist>
+                                    </select>                                    
+                                 </div> 
+                              </div>
+                           </fieldset>
+                          <fieldset>                             
+                               <!-- 上传背景图 -->
+                               <div class="person-head form-group">
+                                  <div class="passa col-sm-2  control-label">
+                                  <img src="__PUBLIC__/img/moface.png" type="hidden" id="img" value="" />
+                                  </div>
+                                  <div class="person-cenbtn col-sm-3">
+                                      <input type="file" name="backgrund" id="file" multiple="multiple" accept="image/*"/>
+                                      <span>上传背景图</span>
+                                  </div>
+                                </div>
+                           </fieldset>
+                        </div>
+                        <div class="panel-footer text-center">
+                           <button type="submit" class="btn btn-info">确定提交</button>
+                        </div>
+                     </div>
+                     <!-- END panel-->
+                  </form>
+               </div>
+            </div>
+            <!-- END row-->
+	</div>
+</section>
+<script type="text/javascript">
+    $(".imgs").change(function () {
+		if(this.files[0]){
+	    	$(this).prev().val(this.files[0].name);
+		}else{
+			$(this).prev().val('');
+		}
+	});
+	
+	$(".upload").bind("click",function(){
+		return $(this).prev().find(".imgs").click();
+	});
+    //上传个人图片
+    $("#file").change(function () {
+        var objUrl = getObjectURL(this.files[0]);
+        console.log("objUrl = " + objUrl);
+        if (objUrl) {
+            $("#img").attr("src", objUrl);
+        }
+    });
+    //建立一個可存取到該file的url
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+	$("form").submit(function(){
+		var flag = false;
+		if($("input[name='title']").val()=="") {
+			swal("提示", '请填写语音标题', "error");			
+			return flag;
+		}
+		if($("input[name='tid']").val()=="") {
+			swal("提示", '请选择分类', "error");			
+			return flag;
+		}
+		if($("#reurl").val()=="") {
+			swal("提示", '请上传语音', "error");			
+			return flag;
+		}
+		if($("input[name='uid']").val()=="") {
+			swal("提示", '请选择发布者', "error");			
+			return flag;
+		}
+		if(!flag){
+			$(this).ajaxSubmit(function(data) {            
+	            swal("提示", data.info, data.type);
+	            if(data.type=='success'){
+					setTimeout(function(){
+						location.reload();
+					},1000);
+				}
+	        });
+			return false;
+		}
+		return false;
+	});
+  </script>
+

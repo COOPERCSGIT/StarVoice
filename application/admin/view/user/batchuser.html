@@ -1,0 +1,71 @@
+<section>
+	 <!-- Page content-->
+	<div class="content-wrapper">	
+		<!-- 标题 -->
+        <!-- 标签-->
+         <!-- START row-->
+            <div class="row">
+               <div class="col-md-12">
+                  <form action="" method="post" data-parsley-validate="" novalidate="" class="form-horizontal">
+                     <!-- START panel-->
+                     <div class="panel panel-default">
+                        <div class="panel-body">
+                           <h4>批量机器</h4>
+                           <fieldset>
+                              <div class="form-group">
+                                 <label class="col-sm-2 control-label">生成数量：</label>
+                                 <div class="col-sm-3">
+                                    <input type="text" name="num" required="required" class="form-control" placeholder="生成多少用户数？避免卡机,建议200以下">
+                                 </div>
+                              </div>
+                           </fieldset>
+						   <fieldset>
+                              <div class="form-group">
+                                 <label class="col-sm-2 control-label">选择昵称：</label>
+                                 <div class="col-sm-3">
+                                    <input type="text" required="required" class="form-control" placeholder="随机" disabled="disabled">
+                                 </div>
+                              </div>
+                           </fieldset>
+                          <fieldset>                             
+                               <!-- 上传背景图 -->
+                               <div class="person-head form-group">
+                                  <div class="passa col-sm-2  control-label">
+                                  <img src="__PUBLIC__/img/moface.png" type="hidden" id="img" value="" />
+                                  </div>
+                                  <div class="person-cenbtn col-sm-3">
+                                      <!--<input type="file" name="file0" id="file" multiple="multiple" accept="image/*"/ disabled="disabled">-->
+                                      <span>随机</span>
+                                  </div>
+                                </div>
+                           </fieldset>
+                        </div>
+                        <div class="panel-footer text-center">
+                           <button type="submit" class="btn btn-info">确定提交</button>
+                        </div>
+                     </div>
+                     <!-- END panel-->
+                  </form>
+               </div>
+            </div>
+            <!-- END row-->
+	</div>
+</section>
+<script type="text/javascript">
+	$("form").submit(function(){
+		var flag = false;
+		if($("input[name='num']").val()=="") {
+			swal("提示", '请填写生成数量', "error");			
+			return flag;
+		}
+		if(!flag){
+			$.post('{:request()->url()}',$(this).serialize(),function(data){
+				swal("提示", data.info, data.type);
+				$("input[type='text']").each(function(){
+					$(this).val('');
+				});
+			})
+		}
+		return false;
+	});
+</script>

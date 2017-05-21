@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <title>语聊 - 语音社交管理系统</title>
+   <meta name="description" content="Bootstrap Admin App + jQuery">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="robots" content="noarchive">
+   <meta name="robots" content="nofollow" />
+   <meta  name="robots"  content="noodp">
+   <link rel="shortcut icon" href="__PUBLIC__/favicon.ico"/>
+   <!-- =============== 预加载页面===============-->
+   <meta http-equiv="Page-Enter" content="RevealTrans(duration=5,Transitionv=11)">  
+   <!-- =============== Sweetalert ===============-->
+   <link rel="stylesheet" href="__PUBLIC__/css/sweetalert.css">
+   <script src="__PUBLIC__/js/jquery.min.js"></script>
+   <script>
+   	var url = '';
+   	var aoColumns = '';
+ 	$(function(){
+     var url = window.location;
+     var pathname = url.pathname;
+     var urlarr =  pathname.split('/');
+     var now_ext = urlarr[(urlarr.length)-1];
+        $('.sidebar .nav li a').each(function(){
+            if(now_ext==$(this).attr('href'))
+            {
+                $(this).parents('ul').find('a').removeClass('active');
+                $(this).addClass('active');
+            }  
+        }); 
+     })
+  </script>
+   <!-- =============== VENDOR STYLES ===============-->
+   <!-- FONT AWESOME-->
+   <link rel="stylesheet" href="__PUBLIC__/css/font-awesome.min.css">
+   <!-- SIMPLE LINE ICONS-->
+   <link rel="stylesheet" href="__PUBLIC__/css/simple-line-icons.css">
+   <!-- ANIMATE.CSS-->
+   <link rel="stylesheet" href="__PUBLIC__/css/animate.min.css">
+   <!-- WHIRL (spinners)-->
+   <link rel="stylesheet" href="__PUBLIC__/css/whirl.css">
+   <!-- =============== PAGE VENDOR STYLES ===============-->
+   <!-- WEATHER ICONS-->
+   <link rel="stylesheet" href="__PUBLIC__/css/weather-icons.min.css">
+   <!-- =============== BOOTSTRAP STYLES ===============-->
+   <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.css" id="bscss">
+   <!-- =============== APP STYLES ===============-->
+   <link rel="stylesheet" href="__PUBLIC__/css/app.css" id="maincss">
+   <!-- JQGRID-->
+   <link rel="stylesheet" href="__PUBLIC__/css/ui.jqgrid.css">
+   <link rel="stylesheet" href="__PUBLIC__/css/jquery-ui.css">
+    <!-- DATATABLES-->
+   <link rel="stylesheet" href="__PUBLIC__/css/dataTables.colVis.css">
+   <link rel="stylesheet" href="__PUBLIC__/css/dataTables.bootstrap.css">
+   <link rel="stylesheet" href="__PUBLIC__/css/index.css">
+   <!-- =============== BOOTSTRAP STYLES ===============-->
+   <!-- Main section-->
+   <link rel="stylesheet" href="__PUBLIC__/css/jquery.fileupload.css">
+   <!-- Loaders.css-->
+   <link rel="stylesheet" href="__PUBLIC__/css/loaders.css">
+   <!-- Spinkit-->
+   <link rel="stylesheet" href="__PUBLIC__/css/spinkit.css">
+   <!-- =============== PAGE VENDOR STYLES ===============-->
+   <!-- TAGS INPUT-->
+   <link rel="stylesheet" href="__PUBLIC__/css/bootstrap-tagsinput.css">
+   <!-- SLIDER CTRL-->
+   <link rel="stylesheet" href="__PUBLIC__/css/bootstrap-slider.min.css">
+   <!-- CHOSEN-->
+   <link rel="stylesheet" href="__PUBLIC__/css/chosen.min.css">
+   <!-- DATETIMEPICKER-->
+   <link rel="stylesheet" href="__PUBLIC__/css/bootstrap-datetimepicker.min.css">
+   <!-- COLORPICKER-->
+   <link rel="stylesheet" href="__PUBLIC__/css/bootstrap-colorpicker.css">
+   <!-- SELECT2-->
+   <link rel="stylesheet" href="__PUBLIC__/css/select2.css">
+   <link rel="stylesheet" href="__PUBLIC__/css/select2-bootstrap.css">
+   <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/jquery-ui.css" />
+</head>
+<body>
+   <div class="wrapper">
+      <!-- top navbar-->
+      <header class="topnavbar-wrapper">
+         <!-- START Top Navbar-->
+         <nav role="navigation" class="navbar topnavbar">
+            <!-- START navbar header-->
+            <div class="navbar-header">
+               <a href="{:url('index/admin')}" class="navbar-brand">
+                  <div class="brand-logo">
+                     <img src="__PUBLIC__/img/logo.png" alt="App Logo" class="img-responsive">
+                  </div>
+                  <div class="brand-logo-collapsed">
+                     <img src="__PUBLIC__/img/logo-single.svg" alt="加载中.." class="img-responsive">
+                  </div>
+               </a>
+            </div>
+            <!-- END navbar header-->
+            <!-- START Nav wrapper-->
+            <div class="nav-wrapper">
+               <!-- START Left navbar-->
+               <ul class="nav navbar-nav">
+                  <li>
+                     <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+                     <a href="#" data-trigger-resize="" data-toggle-state="aside-collapsed" class="hidden-xs">
+                        <em class="fa fa-navicon"></em>
+                     </a>
+                     <!-- Button to show/hide the sidebar on mobile. Visible on mobile only.-->
+                     <a href="#" data-toggle-state="aside-toggled" data-no-persist="true" class="visible-xs sidebar-toggle">
+                        <em class="fa fa-navicon"></em>
+                     </a>
+                  </li>
+                  <!-- START User avatar toggle-->
+                  <li>
+                     <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+                     <a id="user-block-toggle" href="#user-block" data-toggle="collapse">
+                        <em class="icon-user"></em>
+                     </a>
+                  </li>
+               </ul>
+               <!-- END Left navbar-->
+               <!-- START Right Navbar-->
+               <ul class="nav navbar-nav navbar-right">
+                  <!-- Fullscreen (only desktops)-->
+                  <li class="visible-lg">
+                     <a href="#" data-toggle-fullscreen="">
+                        <em class="fa fa-expand"></em>
+                     </a>
+                  </li>
+                  <!-- START Alert menu-->
+                  <!-- END Alert menu-->
+                  <!-- START Offsidebar button-->
+                  <li>
+                     <a href="#" data-toggle-state="offsidebar-open" data-no-persist="true">
+                        <em class="icon-notebook"></em>
+                     </a>
+                  </li>
+                  <!-- END Offsidebar menu-->
+               </ul>
+               <!-- END Right Navbar-->
+            </div>
+            <!-- END Nav wrapper-->
+         </nav>
+         <!-- END Top Navbar-->
+      </header>
+      <!-- sidebar-->
+      <aside class="aside">
+         <!-- START Sidebar (left)-->
+         <div class="aside-inner">
+            <nav data-sidebar-anyclick-close="" class="sidebar">
+               <!-- START sidebar nav-->
+               <ul class="nav">
+                  <!-- START user info-->
+                  <li class="has-user-block">
+                     <div id="user-block" class="collapse">
+                        <div class="item user-block">
+                           <!-- User picture-->
+                           <div class="user-block-picture">
+                              <div class="user-block-status">
+                                 <img src="{$admin['headpic'] ? '__UPLOAD__'.$admin['headpic'] : '__PUBLIC__/img/moface.png'}" onclick="window.location='{:url('/index/account')}'" alt="头像" width="60" height="60" class="img-thumbnail img-circle">
+                                 <div class="circle circle-success circle-lg"></div>
+                              </div>
+                           </div>
+                           <!-- Name and Job-->
+                           <div class="user-block-info">
+                              <span class="user-block-name">Hello, {$admin.nickname}</span>
+                              <span class="user-block-role"><a style="color: #aaa;" href="{:url('/index/account')}">管理账户</a> / <a style="color: #aaa;" href="{:url('/login/logout')}">退出</a> </span>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <!-- END user info-->
+                  <!-- Iterates over all sidebar items-->
+                  <li class="nav-heading ">
+                     <span data-localize="sidebar.heading.HEADER">A</span>
+                  </li>
+                  <li <eq name="Request.action" value="admin">class="active"</eq>>
+                     <a href="{:url('index/admin')}" title="数据中心">
+                        <em class="icon-speedometer"></em>
+                        <span data-localize="sidebar.nav.WIDGETS">数据中心</span>
+                     </a>
+					 <ul id="numberdata" class="nav sidebar-subnav collapse">
+                        <li class="sidebar-subnav-header">数据中心</li>
+                     </ul>
+                  </li>
+                  <li class=" ">
+                     <a href="#dashboard" title="用户管理" data-toggle="collapse">
+                        <!--<div class="pull-right label label-info">3</div>-->
+                        <em class="icon-grid"></em>
+                        <span data-localize="sidebar.nav.DASHBOARD">用户管理</span>
+                     </a>
+                     <ul id="dashboard" class="nav sidebar-subnav collapse">
+                        <li class="sidebar-subnav-header">用户管理</li>
+                        <li <if condition="$Request.action eq 'alluser'">class="active"</if>>
+                           <a href="{:url('user/alluser')}" title="全部用户">
+						   <em class="fa fa-angle-right"></em>
+                              <span>全部用户</span>
+                           </a>
+                        </li>
+                        <li <if condition="$Request.action eq 'batchuser'">class="active"</if>>
+                           <a href="{:url('user/batchuser')}" title="批量机器">
+						   <em class="fa fa-angle-right"></em>
+                              <span>批量机器</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+                  <!--<li class="nav-heading ">
+                     <span data-localize="sidebar.heading.COMPONENTS">B</span>
+                  </li>
+				  <li class=" ">
+                     <a href="#fenlei" title="分类管理" data-toggle="collapse">
+                        <em class="fa fa-paperclip"></em>
+                        <span data-localize="sidebar.nav.table.TABLE">分类管理</span>
+                     </a>
+                     <ul id="fenlei" class="nav sidebar-subnav collapse">
+                        <li class="sidebar-subnav-header">分类管理</li>
+						<li <eq name="Request.action" value="addclass">class="active"</eq>>
+                           <a href="{:url('type/addclass')}" title="添加分类">
+						   <em class="fa fa-angle-right"></em>
+                              <span data-localize="sidebar.nav.table.STANDARD">添加分类</span>
+                           </a>
+                        </li>
+						<li <eq name="Request.action" value="allclass">class="active"</eq>>
+                           <a href="{:url('type/allclass')}" title="全部分类">
+						   <em class="fa fa-angle-right"></em>
+                              <span data-localize="sidebar.nav.table.STANDARD">全部分类</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>-->
+				  <li class=" ">
+                     <a href="#xitong" title="语音管理" data-toggle="collapse">
+                        <em class="fa fa-list-alt"></em>
+                        <span data-localize="sidebar.nav.table.TABLE">语音管理</span>
+                     </a>
+                     <ul id="xitong" class="nav sidebar-subnav collapse">
+                        <li class="sidebar-subnav-header">语音管理</li>
+						<li <eq name="Request.action" value="addyuyin">class="active"</eq>>
+                           <a href="{:url('voice/addyuyin')}" title="发布语音">
+						   <em class="fa fa-angle-right"></em>
+                              <span data-localize="sidebar.nav.table.STANDARD">发布语音</span>
+                           </a>
+                        </li>
+						<li <eq name="Request.action" value="allvoice">class="active"</eq><eq name="Request.action" value="comments">class="active"</eq>>
+                           <a href="{:url('voice/allvoice')}" title="全部语音">
+						   <em class="fa fa-angle-right"></em>
+                              <span data-localize="sidebar.nav.table.STANDARD">全部语音</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+
+               </ul>
+               <!-- END sidebar nav-->
+            </nav>
+         </div>
+         <!-- END Sidebar (left)-->
+      </aside>
+      <!-- offsidebar-->
+      <aside class="offsidebar hide">
+         <!-- START Off Sidebar (right)-->
+         <nav>
+            <div role="tabpanel">
+               <!-- Nav tabs-->
+               <ul role="tablist" class="nav nav-tabs nav-justified">
+                  <li role="presentation" class="active">
+                     <a href="#app-settings" aria-controls="app-settings" role="tab" data-toggle="tab">
+                        <em class="icon-equalizer fa-lg"></em>
+                     </a>
+                  </li>
+                  <li role="presentation">
+                     <a href="#app-chat" aria-controls="app-chat" role="tab" data-toggle="tab">
+                        <em class="icon-user fa-lg"></em>
+                     </a>
+                  </li>
+               </ul>
+               <!-- Tab panes-->
+               <div class="tab-content">
+                  <div id="app-settings" role="tabpanel" class="tab-pane fade in active">
+                     <h3 class="text-center text-thin">个性化面板</h3>
+                     <div class="p">
+                        <h4 class="text-muted text-thin">主题</h4>
+                        <div class="table-grid mb">
+                           <div class="col mb">
+                              <div class="setting-color">
+                                 <label data-load-css="__PUBLIC__/css/theme-a.css">
+                                    <input type="radio" name="setting-theme" checked="checked">
+                                    <span class="icon-check"></span>
+                                    <span class="split">
+                                       <span class="color bg-info"></span>
+                                       <span class="color bg-info-light"></span>
+                                    </span>
+                                    <span class="color bg-white"></span>
+                                 </label>
+                              </div>
+                           </div>
+                           <div class="col mb">
+                              <div class="setting-color">
+                                 <label data-load-css="__PUBLIC__/css/theme-b.css">
+                                    <input type="radio" name="setting-theme">
+                                    <span class="icon-check"></span>
+                                    <span class="split">
+                                       <span class="color bg-green"></span>
+                                       <span class="color bg-green-light"></span>
+                                    </span>
+                                    <span class="color bg-white"></span>
+                                 </label>
+                              </div>
+                           </div>
+                           <div class="col mb">
+                              <div class="setting-color">
+                                 <label data-load-css="__PUBLIC__/css/theme-c.css">
+                                    <input type="radio" name="setting-theme">
+                                    <span class="icon-check"></span>
+                                    <span class="split">
+                                       <span class="color bg-purple"></span>
+                                       <span class="color bg-purple-light"></span>
+                                    </span>
+                                    <span class="color bg-white"></span>
+                                 </label>
+                              </div>
+                           </div>
+                           <div class="col mb">
+                              <div class="setting-color">
+                                 <label data-load-css="__PUBLIC__/css/theme-d.css">
+                                    <input type="radio" name="setting-theme">
+                                    <span class="icon-check"></span>
+                                    <span class="split">
+                                       <span class="color bg-danger"></span>
+                                       <span class="color bg-danger-light"></span>
+                                    </span>
+                                    <span class="color bg-white"></span>
+                                 </label>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="table-grid mb">
+                           <div class="col mb">
+                              <div class="setting-color">
+                                 <label data-load-css="__PUBLIC__/css/theme-e.css">
+                                    <input type="radio" name="setting-theme">
+                                    <span class="icon-check"></span>
+                                    <span class="split">
+                                       <span class="color bg-info-dark"></span>
+                                       <span class="color bg-info"></span>
+                                    </span>
+                                    <span class="color bg-gray-dark"></span>
+                                 </label>
+                              </div>
+                           </div>
+                           <div class="col mb">
+                              <div class="setting-color">
+                                 <label data-load-css="__PUBLIC__/css/theme-f.css">
+                                    <input type="radio" name="setting-theme">
+                                    <span class="icon-check"></span>
+                                    <span class="split">
+                                       <span class="color bg-green-dark"></span>
+                                       <span class="color bg-green"></span>
+                                    </span>
+                                    <span class="color bg-gray-dark"></span>
+                                 </label>
+                              </div>
+                           </div>
+                           <div class="col mb">
+                              <div class="setting-color">
+                                 <label data-load-css="__PUBLIC__/css/theme-g.css">
+                                    <input type="radio" name="setting-theme">
+                                    <span class="icon-check"></span>
+                                    <span class="split">
+                                       <span class="color bg-purple-dark"></span>
+                                       <span class="color bg-purple"></span>
+                                    </span>
+                                    <span class="color bg-gray-dark"></span>
+                                 </label>
+                              </div>
+                           </div>
+                           <div class="col mb">
+                              <div class="setting-color">
+                                 <label data-load-css="__PUBLIC__/css/theme-h.css">
+                                    <input type="radio" name="setting-theme">
+                                    <span class="icon-check"></span>
+                                    <span class="split">
+                                       <span class="color bg-danger-dark"></span>
+                                       <span class="color bg-danger"></span>
+                                    </span>
+                                    <span class="color bg-gray-dark"></span>
+                                 </label>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="p">
+                        <h4 class="text-muted text-thin">面板</h4>
+                        <div class="clearfix">
+                           <p class="pull-left">固定导航</p>
+                           <div class="pull-right">
+                              <label class="switch">
+                                 <input id="chk-fixed" type="checkbox" data-toggle-state="layout-fixed">
+                                 <span></span>
+                              </label>
+                           </div>
+                        </div>
+						<div class="clearfix">
+                           <p class="pull-left">图文菜单</p>
+                           <div class="pull-right">
+                              <label class="switch">
+                                 <input id="chk-collapsed-text" type="checkbox" data-toggle-state="aside-collapsed-text">
+                                 <span></span>
+                              </label>
+                           </div>
+                        </div>
+						<div class="clearfix">
+                           <p class="pull-left">闭合菜单</p>
+                           <div class="pull-right">
+                              <label class="switch">
+                                 <input id="chk-collapsed" type="checkbox" data-toggle-state="aside-collapsed">
+                                 <span></span>
+                              </label>
+                           </div>
+                        </div>
+						</div>
+                     <div class="p">
+                        <h4 class="text-muted text-thin">其它</h4>
+                        <div class="clearfix">
+                           <p class="pull-left">浮动菜单</p>
+                           <div class="pull-right">
+                              <label class="switch">
+                                 <input id="chk-float" type="checkbox" data-toggle-state="aside-float">
+                                 <span></span>
+                              </label>
+                           </div>
+                        </div>
+                        <div class="clearfix">
+                           <p class="pull-left">悬停菜单</p>
+                           <div class="pull-right">
+                              <label class="switch">
+                                 <input id="chk-hover" type="checkbox" data-toggle-state="aside-hover">
+                                 <span></span>
+                              </label>
+                           </div>
+                        </div>
+                        <div class="clearfix">
+                           <p class="pull-left">滚动条</p>
+                           <div class="pull-right">
+                              <label class="switch">
+                                 <input id="chk-hover" type="checkbox" data-toggle-state="show-scrollbar" data-target=".sidebar">
+                                 <span></span>
+                              </label>
+                           </div>
+                        </div>
+                     </div>
+                  </div>                  
+               </div>
+            </div>
+         </nav>
+      </aside>
+         <!-- END Off Sidebar (right)-->

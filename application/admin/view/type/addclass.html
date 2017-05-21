@@ -1,0 +1,72 @@
+<section>
+	<!-- Page content-->
+	<div class="content-wrapper">
+		<!-- 标题 -->
+		<!-- 标签-->
+		<!-- START row-->
+		<div class="row">
+			<div class="col-md-12">
+				<form action="" method="post" data-parsley-validate="" novalidate="" class="form-horizontal">
+					<!-- START panel-->
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h4><if condition="$type">编辑分类<else/>新增分类</if></h4>
+							<fieldset>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">分类标题：</label>
+									<div class="col-sm-2">
+										<input type="text" name="title" value="{$type.title}" required="required" class="form-control" placeholder="1~5个汉字">
+										<br>
+									</div>
+									<div class="col-sm-1">
+										<input type="text" name="sort" value="{$type.sort}" required="required" class="form-control" placeholder="排序编号">
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">所属分类：</label>
+									<div class="col-sm-3">
+										<select name="pid" class="form-control">
+											<option selected value="0">设为顶级分类</option>
+										</select>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+						<div class="panel-footer text-center">
+							<button type="submit" class="btn btn-info">
+							确定提交
+							</button>
+						</div>
+					</div>
+					<!-- END panel-->
+				</form>
+			</div>
+		</div>
+		<!-- END row-->
+	</div>
+</section>
+<script src="__PUBLIC__/js/sweetalert.min.js"></script>
+<script type="text/javascript">
+	$("form").submit(function(){
+		var flag = false;
+		if($("input[name='title']").val()=="") {
+			swal("提示", '请填写分类标题', "error");			
+			return flag;
+		}
+		if($("input[name='sort']").val()=="") {
+			swal("提示", '请填写排序编号', "error");			
+			return flag;
+		}
+		if(!flag){
+			$.post('{:request()->url()}',$(this).serialize(),function(data){
+				swal("提示", data.info, data.type);
+				$("input[type='text']").each(function(){
+					$(this).val('');
+				});
+			})
+		}
+		return false;
+	});
+</script>

@@ -1,0 +1,94 @@
+<section>
+	 <!-- Page content-->
+	<div class="content-wrapper">	
+        <!-- 标签-->
+        <div class="row">
+           <div class="col-md-12">
+              <!-- START panel-->
+              <div class="panel panel-default">
+                 <div class="panel-heading">
+                    <h3 class="panel-title">全部用户{$stitle}</h3>
+                 </div>
+                 <div class="panel-body">                    
+                    <!-- 时间 -->
+                    <div class="buall btn-group mb-sm form-inline">
+                          <input name="act_start_time" type="text" class="form-control" value="" placeholder="注册时间" title="" readonly="readonly"/>
+                          <div class="line">-</div>
+                          <input name="act_stop_time" type="text" class="form-control" value="" placeholder="截止时间" title="" readonly="readonly" />
+                          <input type="text" class="form-control" value="" placeholder="输入搜索内容" />
+                    </div>
+                     <div class="btto btn-group mb-sm form-inline">
+                          <button type="submit" class="colora form-control btn-default">搜索</button>
+                      </div>
+
+                    <!-- 时间结束 -->
+                 </div>
+              </div>
+              <!-- END panel-->
+           </div>
+        </div>
+        <!-- table表格-->
+        <div class="container-fluid">        
+           <!-- START DATATABLE 1 -->
+           <div class="posit">
+             <div class="row">
+                <div class="col-lg-12">
+                   <div class="panel panel-default">
+                      <div class="panel-heading">
+                         数据显示 |
+                         <small>Data Display</small>
+                      </div>
+                      <div class="panel-body">
+                         <table id="datatable1" class="table table-striped table-hover">
+                            <thead>
+                               <tr>
+                                  <th class="dis-none" data-check-all>
+                                    <div data-toggle="tooltip" data-title="Check All" class="checkbox c-checkbox">
+                                       <label>
+                                          <input type="checkbox">
+                                          <span class="fa fa-check"></span>
+                                       </label>
+                                    </div>
+                                 </th>
+                                  <th>微信OPENID</th>
+                                  <th>昵称</th>
+                                  <th class="sort-numeric">发语音</th>
+								  <th class="sort-numeric">收藏</th>
+								  <th class="sort-numeric">关注</th>
+								  <th class="sort-numeric">注册时间</th>
+                                  <th class="sort-alpha">操作</th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                         </table>
+                      </div>
+                   </div>
+                </div>
+             </div>             
+           </div>
+        </div>
+	</div>
+</section>
+<script>
+	aoColumns = [{
+		"mData": 'uid',
+		render: function(data) {			
+			return '<div class="checkbox c-checkbox"><label><input type="checkbox" value="'+data+'"><span class="fa fa-check"></span></div>';
+		},
+	}, {
+		"mData": "wxopenid"
+	}, {
+		"mData": "nickname"
+	}, {
+		"mData": "vnum"
+	}, {
+		"mData": "fnum"
+	}, {
+		"mData": "bnum"
+	}, {
+		"mData": "addtime",
+	}, {
+		"mData": "other",
+	}];
+</script>
